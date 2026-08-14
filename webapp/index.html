@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>CalorieAI</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-title">
+                <span class="logo">CalorieAI</span>
+                <span class="subtitle">Умный подсчет калорий</span>
+            </div>
+        </header>
+        <main class="main">
+            <section class="profile-card" id="profile-section">
+                <div class="profile-header">
+                    <div class="avatar">
+                        <span id="avatar-letter">U</span>
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="user-name">Загрузка...</h2>
+                        <p id="user-stats">ИМТ: -- | Возраст: --</p>
+                    </div>
+                </div>
+                <div class="weight-goal" id="weight-goal">
+                    <span class="weight-current" id="weight-current">-- кг</span>
+                    <span class="weight-arrow">→</span>
+                    <span class="weight-target" id="weight-target">-- кг</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value" id="bmi-value">--</span>
+                        <span class="stat-label">ИМТ</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="bmr-value">--</span>
+                        <span class="stat-label">Баз. обмен</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="target-value">--</span>
+                        <span class="stat-label">Цель ккал</span>
+                    </div>
+                </div>
+            </section>
+            <section class="progress-section">
+                <div class="progress-header">
+                    <h3>Сегодня</h3>
+                    <span class="progress-ratio" id="progress-ratio">0 / 0</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="remaining-calories" id="remaining-calories">
+                    Осталось: -- ккал
+                </div>
+                <div class="progress-stats">
+                    <div class="macro">
+                        <span class="macro-dot protein"></span>
+                        <span class="macro-label">Белки</span>
+                        <span class="macro-value" id="protein-value">0г</span>
+                    </div>
+                    <div class="macro">
+                        <span class="macro-dot fat"></span>
+                        <span class="macro-label">Жиры</span>
+                        <span class="macro-value" id="fat-value">0г</span>
+                    </div>
+                    <div class="macro">
+                        <span class="macro-dot carbs"></span>
+                        <span class="macro-label">Углеводы</span>
+                        <span class="macro-value" id="carbs-value">0г</span>
+                    </div>
+                </div>
+            </section>
+            <section class="meals-section">
+                <h3>Приемы пищи</h3>
+                <div class="meals-list" id="meals-list">
+                    <div class="empty-state">
+                        <span class="empty-icon">🍽</span>
+                        <p>Сегодня еще не было приемов пищи</p>
+                    </div>
+                </div>
+            </section>
+            <section class="chart-section">
+                <h3>Недельная статистика</h3>
+                <div class="chart-container" id="weekly-chart">
+                    <div class="chart-placeholder">Загрузка графика...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

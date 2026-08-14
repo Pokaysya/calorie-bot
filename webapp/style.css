@@ -1,0 +1,205 @@
+:root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface-light: #252525;
+    --primary: #4ade80;
+    --primary-dim: #22c55e;
+    --text: #f5f5f5;
+    --text-secondary: #a3a3a3;
+    --text-muted: #737373;
+    --border: #2a2a2a;
+    --protein: #f87171;
+    --fat: #fbbf24;
+    --carbs: #60a5fa;
+    --radius: 16px;
+    --radius-sm: 10px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app { max-width: 480px; margin: 0 auto; padding: 0 16px 40px; }
+
+.header { padding: 20px 0 16px; }
+
+.header-title { display: flex; flex-direction: column; gap: 2px; }
+
+.logo {
+    font-size: 24px; font-weight: 800; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.subtitle { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+
+.profile-card {
+    background: var(--surface); border-radius: var(--radius);
+    padding: 20px; margin-bottom: 16px; border: 1px solid var(--border);
+}
+
+.profile-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+
+.avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 700; color: #000; flex-shrink: 0;
+}
+
+.profile-info { min-width: 0; }
+
+.profile-info h2 {
+    font-size: 18px; font-weight: 700; margin-bottom: 3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.profile-info p { font-size: 13px; color: var(--text-secondary); }
+
+.weight-goal {
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; padding: 14px; background: var(--surface-light);
+    border-radius: var(--radius-sm); margin-bottom: 16px;
+}
+
+.weight-current, .weight-target { font-size: 16px; font-weight: 700; }
+
+.weight-current { color: var(--text); }
+
+.weight-target { color: var(--primary); }
+
+.weight-arrow { color: var(--text-muted); font-size: 18px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.stat-item {
+    background: var(--surface-light); border-radius: var(--radius-sm);
+    padding: 14px 8px; text-align: center;
+}
+
+.stat-value { display: block; font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 3px; }
+
+.stat-label { font-size: 11px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+
+.progress-section {
+    background: var(--surface); border-radius: var(--radius);
+    padding: 20px; margin-bottom: 16px; border: 1px solid var(--border);
+}
+
+.progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+
+.progress-header h3 { font-size: 16px; font-weight: 700; }
+
+.progress-ratio { font-size: 14px; color: var(--text-secondary); font-weight: 600; }
+
+.progress-bar-container {
+    width: 100%; height: 12px; background: var(--surface-light);
+    border-radius: 100px; overflow: hidden; margin-bottom: 14px; position: relative;
+}
+
+.progress-bar {
+    height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-dim));
+    border-radius: 100px; width: 0%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+}
+
+.progress-bar::after {
+    content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+    width: 20px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15));
+    border-radius: 0 100px 100px 0;
+}
+
+.remaining-calories {
+    text-align: center; font-size: 18px; font-weight: 700;
+    color: var(--primary); margin-bottom: 16px; padding: 10px;
+    background: var(--surface-light); border-radius: var(--radius-sm);
+}
+
+.progress-stats { display: flex; justify-content: space-around; }
+
+.macro { display: flex; align-items: center; gap: 6px; }
+
+.macro-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+.macro-dot.protein { background: var(--protein); }
+
+.macro-dot.fat { background: var(--fat); }
+
+.macro-dot.carbs { background: var(--carbs); }
+
+.macro-label { font-size: 12px; color: var(--text-muted); }
+
+.macro-value { font-size: 13px; font-weight: 700; color: var(--text-secondary); }
+
+.meals-section, .chart-section {
+    background: var(--surface); border-radius: var(--radius);
+    padding: 20px; margin-bottom: 16px; border: 1px solid var(--border);
+}
+
+.meals-section h3, .chart-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+
+.meals-list { display: flex; flex-direction: column; gap: 10px; }
+
+.meal-item {
+    display: flex; align-items: center; gap: 12px; padding: 14px;
+    background: var(--surface-light); border-radius: var(--radius-sm); transition: transform 0.15s;
+}
+
+.meal-item:active { transform: scale(0.98); }
+
+.meal-icon {
+    width: 42px; height: 42px; border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+}
+
+.meal-info { flex: 1; min-width: 0; }
+
+.meal-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+
+.meal-type { font-size: 11px; color: var(--text-muted); text-transform: capitalize; }
+
+.meal-calories { font-size: 15px; font-weight: 800; color: var(--primary); flex-shrink: 0; }
+
+.empty-state { text-align: center; padding: 30px 20px; color: var(--text-muted); }
+
+.empty-icon { font-size: 40px; display: block; margin-bottom: 10px; opacity: 0.6; }
+
+.empty-state p { font-size: 14px; }
+
+.chart-container { height: 180px; display: flex; align-items: flex-end; justify-content: space-between; gap: 6px; padding-top: 10px; }
+
+.chart-bar-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+.chart-bar {
+    width: 100%; background: linear-gradient(180deg, var(--primary), var(--primary-dim));
+    border-radius: 6px 6px 0 0; min-height: 4px;
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+}
+
+.chart-bar.over { background: linear-gradient(180deg, #ef4444, #dc2626); }
+
+.chart-label { font-size: 10px; color: var(--text-muted); font-weight: 500; }
+
+.chart-placeholder { width: 100%; text-align: center; color: var(--text-muted); font-size: 14px; padding: 60px 0; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-card, .progress-section, .meals-section, .chart-section {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.progress-section { animation-delay: 0.05s; }
+
+.meals-section { animation-delay: 0.1s; }
+
+.chart-section { animation-delay: 0.15s; }
