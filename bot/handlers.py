@@ -3,7 +3,6 @@ from aiogram import Router, F, Bot
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery, FSInputFile
-from PIL import Image
 from bot.config import OPENAI_API_KEY, GEMINI_API_KEY
 from bot.database import (
     create_or_update_user, get_user, add_meal,
@@ -272,12 +271,7 @@ async def process_meal_photo(message: Message, state: FSMContext, bot: Bot):
     file = await bot.get_file(photo.file_id)
     file_path = file.file_path
     image_bytes = await bot.download_file(file_path)
-    image = Image.open(io.BytesIO(image_bytes.read()))
-    if image.mode in ('RGBA', 'P'):
-        image = image.convert('RGB')
-    buffered = io.BytesIO()
-    image.save(buffered, format='JPEG')
-    img_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+img_base64 = base64.b64encode(image_bytes.read()).decode('utf-8')
     try:
         if provider == 'openai':
             meal_data = await analyze_with_openai(img_base64)
