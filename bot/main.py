@@ -12,6 +12,8 @@ from bot.webapp_server import setup_webapp
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+from aiogram.types import BotCommand
+
 async def on_startup(bot: Bot):
     await init_db()
     await bot.set_my_commands([
