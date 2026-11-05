@@ -217,25 +217,25 @@ async def show_profile(callback: CallbackQuery):
     progress = get_progress_bar(current, target)
     weight_progress = get_weight_progress(user.get('weight', 0), user.get('target_weight', 0))
     text = (
-        f'<b>👤 Мой профиль</b><br><br>'
+        f"<b>👤 Мой профиль</b><br><br>"
         f"Имя: {user.get('first_name', 'Неизвестно')}<br>"
         f"Пол: {'Мужской' if user.get('gender') == 'male' else 'Женский'}<br>"
         f"Возраст: {user.get('age')} лет<br>"
         f"Рост: {user.get('height')} см<br>"
         f"Текущий вес: {user.get('weight')} кг<br>"
         f"Целевой вес: {user.get('target_weight')} кг<br>"
-        f'Прогресс: {weight_progress}<br>'
-        f'Активность: {get_activity_description(user.get('activity_level', ''))}<br><br>'
-        f'<b>📊 Показатели:</b><br>'
-        f'ИМТ: {bmi} ({get_bmi_category(bmi)})<br>'
-        f'Базовый обмен: {user.get('bmr')} ккал<br>'
-        f'Норма: {user.get('daily_calories')} ккал<br>'
-        f'Цель: {target} ккал<br><br>'
-        f'<b>📈 Сегодня:</b><br>'
-        f'Съедено: {current} ккал<br>'
-        f'Осталось: {remaining} ккал<br>'
-        f'{progress}<br>'
-        f'Приемов пищи: {user.get('meals_count', 0)}'
+        f"Прогресс: {weight_progress}<br>"
+        f"Активность: {get_activity_description(user.get('activity_level', ''))}<br><br>"
+        f"<b>📊 Показатели:</b><br>"
+        f"ИМТ: {bmi} ({get_bmi_category(bmi)})<br>"
+        f"Базовый обмен: {user.get('bmr')} ккал<br>"
+        f"Норма: {user.get('daily_calories')} ккал<br>"
+        f"Цель: {target} ккал<br><br>"
+        f"<b>📈 Сегодня:</b><br>"
+        f"Съедено: {current} ккал<br>"
+        f"Осталось: {remaining} ккал<br>"
+        f"{progress}<br>"
+        f"Приемов пищи: {user.get('meals_count', 0)}"
     )
     await callback.message.edit_text(text, reply_markup=back_menu_keyboard(), parse_mode='HTML')
     await callback.answer()
